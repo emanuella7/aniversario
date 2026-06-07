@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Surpresa</title>
+
+<!-- Fonte melhor para leitura -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #000000, #1a001f, #330000, #3a0066);
+        font-family: 'Poppins', sans-serif;
+        overflow: hidden;
+        color: white;
+        text-align: center;
+    }
+
+    .screen {
+        position: absolute;
+        transition: opacity 1s ease;
+    }
+
+    .hidden {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .cake {
+        font-size: 95px;
+        animation: float 2s ease-in-out infinite;
+        text-shadow: 0 0 15px #ff0000, 0 0 25px #9333ea;
+    }
+
+    h1 {
+        font-size: 42px;
+        font-weight: 700;
+        background: linear-gradient(90deg, #ff0000, #9333ea, #ffffff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .question-box {
+        margin-top: 30px;
+        display: none;
+    }
+
+    button {
+        padding: 10px 25px;
+        margin: 10px;
+        border: none;
+        border-radius: 20px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .yes {
+        background: linear-gradient(45deg, #ff0000, #9333ea);
+        color: white;
+    }
+
+    .yes:hover {
+        transform: scale(1.1);
+    }
+
+    .no {
+        background: black;
+        color: #ff4d4d;
+        border: 2px solid #ff0000;
+    }
+
+    .message {
+        margin-top: 15px;
+        font-size: 16px;
+        color: #ff4d4d;
+    }
+
+    /* Segunda tela */
+    .second-screen {
+        max-width: 600px;
+        padding: 30px;
+        border-radius: 20px;
+        background: rgba(0, 0, 0, 0.6);
+        box-shadow: 0 0 30px #9333ea;
+        backdrop-filter: blur(10px);
+    }
+
+    .second-screen h2 {
+        font-size: 30px;
+        margin-bottom: 20px;
+        color: #ff4d4d;
+        font-weight: 600;
+    }
+
+    .second-screen p {
+        font-size: 18px;
+        line-height: 1.6;
+        color: #ddd;
+        font-weight: 300;
+    }
+
+    @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-12px); }
+        100% { transform: translateY(0px); }
+    }
+
+</style>
+</head>
+<body>
+
+<!-- PRIMEIRA TELA -->
+<div class="screen" id="firstScreen">
+    <div class="cake">🎂</div>
+    <h1>Happy Birthday my Love!</h1>
+
+    <div class="question-box" id="questionBox">
+        <h2>Você deseja continuar?</h2>
+        <button class="yes" onclick="continuar()">Sim</button>
+        <button class="no" onclick="naoContinuar()">Não</button>
+        <div class="message" id="responseMessage"></div>
+    </div>
+</div>
+
+<!-- SEGUNDA TELA -->
+<div class="screen hidden" id="secondScreen">
+    <div class="second-screen">
+        <h2>Uma Mensagem Especial 💜</h2>
+        <p>
+            Hoje é um dia muito especial…  
+            E eu só queria lembrar o quanto você é importante.  
+            Que cada sonho seu se realize,  
+            que cada sorriso seu brilhe ainda mais.  
+            Meu amor, apesar das nossas brigas constantes, quero que saiba que meu amor por você ée maior que tudo.
+            so quero o seu sorriso, a sua felicidade, e que a gente possa superar tudo juntos.  
+            Feliz aniversário, meu amor! Que esse dia seja tão incrível quanto você é para mim.
+            Eu te amo muito muito, e espero que esse seja apenas mais um de muitos aniversários que vamos comemorar juntos. (que no seu proximo anivesario possamos estar lado a lado)
+        </p>
+    </div>
+</div>
+
+<script>
+    setTimeout(() => {
+        document.getElementById("questionBox").style.display = "block";
+    }, 3000);
+
+    function continuar() {
+        document.getElementById("firstScreen").classList.add("hidden");
+        setTimeout(() => {
+            document.getElementById("secondScreen").classList.remove("hidden");
+        }, 800);
+    }
+
+    function naoContinuar() {
+        document.getElementById("responseMessage").innerHTML =
+        "Você precisa apertar no botão SIM 😏🔥";
+    }
+</script>
+
+</body>
+</html>
